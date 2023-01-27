@@ -37,16 +37,29 @@ const StyleEspacoButton = styled.div`
   }
 `;
 
-export default function ListarTarefa({ listaTarefas }) {
+export default function ListarTarefa({
+  listaTarefas,
+  editarTarefa,
+  excluirTarefa,
+}) {
+  function handleClickEditar(index) {
+    const novaTarefa = prompt("Edite a sua tarefa..");
+    editarTarefa(index, novaTarefa);
+  }
+
+  function handleClickExcluir(index) {
+    excluirTarefa(index, 1);
+  }
+
   return (
     <StyleUlTarefa>
-      {listaTarefas.map((tarefa) => {
+      {listaTarefas.map((tarefa, index) => {
         return (
           <li>
             {tarefa}
             <StyleEspacoButton>
-              <button>Editar</button>
-              <button>Excluir</button>
+              <button onClick={() => handleClickEditar(index)}>Editar</button>
+              <button onClick={() => handleClickExcluir(index)}>Excluir</button>
             </StyleEspacoButton>
           </li>
         );

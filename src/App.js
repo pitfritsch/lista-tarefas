@@ -23,10 +23,22 @@ function App() {
   const [listaTarefas, setlistaTarefas] = useState([]);
 
   function criarTarefa(descricao) {
-    // const novalista = [...listaTarefas];
+    const novalista = [...listaTarefas, descricao];
     // novalista.push(descricao);
     // setlistaTarefas(novalista);
-    setlistaTarefas([...listaTarefas, descricao]); //nova lista sem nome
+    setlistaTarefas(novalista);
+  }
+
+  function editarTarefa(index, novaTarefa) {
+    const novalista = [...listaTarefas];
+    novalista[index] = novaTarefa;
+    setlistaTarefas(novalista);
+  }
+
+  function excluirTarefa(index) {
+    const novalista = [...listaTarefas];
+    novalista.splice(index, 1);
+    setlistaTarefas(novalista);
   }
 
   return (
@@ -37,7 +49,11 @@ function App() {
           placeholder="Crie uma tarefa aqui..."
           criar={criarTarefa}
         />
-        <ListarTarefa listaTarefas={listaTarefas} />
+        <ListarTarefa
+          listaTarefas={listaTarefas}
+          editarTarefa={editarTarefa}
+          excluirTarefa={excluirTarefa}
+        />
       </StyleListaTarefas>
     </StyleApp>
   );
