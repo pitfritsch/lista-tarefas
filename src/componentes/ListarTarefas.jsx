@@ -45,7 +45,7 @@ export default function ListarTarefa({
   function handleClickEditar(index) {
     const novaTarefa = prompt("Edite a sua tarefa..");
 
-    if (novaTarefa == "") {
+    if (novaTarefa === "") {
       alert(
         "Você não alterou a tarefa antiga, altere a tarefa colocando um novo texto"
       );
