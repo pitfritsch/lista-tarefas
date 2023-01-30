@@ -44,7 +44,12 @@ export default function ListarTarefa({
 }) {
   function handleClickEditar(index) {
     const novaTarefa = prompt("Edite a sua tarefa..");
-    editarTarefa(index, novaTarefa);
+
+    if (novaTarefa == "") {
+      alert(
+        "Você não alterou a tarefa antiga, altere a tarefa colocando um novo texto"
+      );
+    } else editarTarefa(index, novaTarefa);
   }
 
   function handleClickExcluir(index) {

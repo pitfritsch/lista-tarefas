@@ -33,7 +33,9 @@ export default function CriarTarefa({ placeholder, criar }) {
   }
 
   function handleClick() {
-    criar(descricao);
+    if (descricao == "") {
+      alert("tu não escreveu carario nenhum, escreve um negocio ae");
+    } else criar(descricao);
     setDescricao("");
   }
 
